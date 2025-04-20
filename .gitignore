@@ -1,0 +1,61 @@
+# Visual Studio / Rider specific
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+bin/
+obj/
+
+# ASP.NET Core files
+appsettings.Development.json
+secrets.json
+*.db
+
+# Rider project files
+*.DotSettings.user
+
+# JetBrains Rider workspace
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored because of PackageRestore
+**/packages/*
+
+# Uncomment if you have tasks that create the project's static files in wwwroot
+# wwwroot/
+
+# Coverage results
+.coverage
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.info
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# TeamCity
+.teamcity/
+
+# Rider Plugins
+.idea/
+
+# Dotnet user-specific files
+*.userprefs

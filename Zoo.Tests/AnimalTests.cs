@@ -1,6 +1,6 @@
 namespace Zoo.Tests;
 
-public class UnitTest1
+public class AnimalTests
 {
     [Fact]
     public void Test1()

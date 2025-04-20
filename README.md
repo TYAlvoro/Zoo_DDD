@@ -124,7 +124,7 @@ ZooSolution/
 
 ```bash
 git clone <repo-url>
-cd ZooSolution
+cd Zoo
 dotnet restore
 dotnet build
 ```
@@ -154,17 +154,9 @@ dotnet run
    ```
 
 3. **Покрытие кода / Coverage**  
-   Для расчёта покрытия используйте файл `cover.runsettings`, который задаёт, какие сборки учитывать:
    ```bash
    dotnet test --settings cover.runsettings --collect:"XPlat Code Coverage"
    ```
-   В файле `cover.runsettings` настроены фильтры для исключения проектов:
-   - `Zoo.Infrastructure*`  
-   - `Zoo.Presentation*`  
-   - `Zoo.Tests*`  
-
-   Таким образом покрытие считается только по слоям Domain и Application.
-
 ---
 
 ## Swagger / OpenAPI

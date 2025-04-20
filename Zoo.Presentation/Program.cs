@@ -26,26 +26,20 @@ builder.Services
     .AddControllers()
     .AddJsonOptions(opts =>
     {
-        // сериализация enum как строки
         opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-        // конвертеры для DateOnly / TimeOnly
         opts.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
         opts.JsonSerializerOptions.Converters.Add(new TimeOnlyJsonConverter());
     });
 
-// 4. SwaggerGen с кастомными schemaId и MapType
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // уникальные имена схем для вложенных DTO
     c.CustomSchemaIds(type => type.FullName!.Replace("+", "."));
     
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zoo API", Version = "v1" });
 
-    // описываем DateOnly → string (date)
     c.MapType<DateOnly>(() =>
         new OpenApiSchema { Type = "string", Format = "date" });
-    // описываем TimeOnly → string (time)
     c.MapType<TimeOnly>(() =>
         new OpenApiSchema { Type = "string", Format = "time" });
 });
@@ -90,10 +84,6 @@ using(var scope = app.Services.CreateScope())
 
 app.Run();
 
-
-// ==========================================
-// JSON‑конвертеры для DateOnly и TimeOnly
-// ==========================================
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";

@@ -1,4 +1,5 @@
-﻿using Zoo.Application.Services;
+﻿using Microsoft.OpenApi.Models;
+using Zoo.Application.Services;
 using Zoo.Infrastructure.EventBus;
 using Zoo.Infrastructure.Repositories;
 using Zoo.Application.Interfaces;
@@ -20,12 +21,26 @@ builder.Services.AddScoped<ZooStatisticsService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.CustomSchemaIds(type =>
+        type.FullName!.Replace("+", "."));
+    
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zoo API", Version = "v1" });
+
+    c.MapType<DateOnly>(() => new OpenApiSchema { Type = "string", Format = "date" });
+    c.MapType<TimeOnly>(() => new OpenApiSchema { Type = "string", Format = "time" });
+});
 
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.RoutePrefix = "";
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zoo API V1");
+});
+
 app.MapControllers();
 
 // Seed demo data

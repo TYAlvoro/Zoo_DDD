@@ -123,7 +123,7 @@ ZooSolution/
 **Требуется**: .NET 8.0 SDK, JetBrains Rider (рекомендуется).
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/TYAlvoro/Zoo_DDD
 cd Zoo
 dotnet restore
 dotnet build

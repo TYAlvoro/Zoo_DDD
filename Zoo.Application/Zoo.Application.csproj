@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Zoo.Domain\Zoo.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

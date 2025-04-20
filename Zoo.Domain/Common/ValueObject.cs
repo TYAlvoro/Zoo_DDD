@@ -1,6 +1,3 @@
 namespace Zoo.Domain.Common;
 
-public class ValueObject
-{
-    
-}
+public abstract record ValueObject;

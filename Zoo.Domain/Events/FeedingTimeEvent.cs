@@ -1,6 +1,6 @@
+using Zoo.Domain.Common;
+using Zoo.Domain.ValueObjects;
+
 namespace Zoo.Domain.Events;
 
-public class FeedingTimeEvent
-{
-    
-}
+public sealed record FeedingTimeEvent(FeedingId FeedingId) : DomainEvent;
